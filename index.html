@@ -1,116 +1,432 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Join the National Youth Day 2025 Marathon. Run for Chennai, run to challenge yourself!">
+  <meta name="description"
+    content="Join the National Youth Day 2025 Marathon. Run for Chennai, run to challenge yourself!">
   <title>National Youth Day Marathon 2025</title>
+  <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- AOS Library for Scroll Animations -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <style>
-    /* Parallax effect */
-    .parallax {
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
+    html {
+      scroll-behavior: smooth;
     }
 
-    /* Logo in the top-left corner */
-    .logo {
+    .scroll-offset {
+      padding-top: 80px;
+      /* Adjust this to match your navbar height */
+    }
+
+    /* Parallax effect */
+    .parallax {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Parallax background with JS manipulation */
+    .parallax-container {
+      position: relative;
+      overflow: hidden;
+      height: 100vh;
+      /* Full height of the viewport */
+    }
+
+    .parallax-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      will-change: transform;
+      /* Optimizing for performance */
+    }
+
+    /* Make sure sections have enough height to show parallax effect */
+    .min-h-screen {
+      height: 100vh;
+    }
+
+    /* Navbar style */
+    .navbar {
       position: fixed;
-      top: 20px;
-      left: 20px;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
-      width: 120px;
+      background-color: rgba(255, 255, 255, 0);
+      /* Transparent background initially */
+      padding: 1rem;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      box-shadow: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar.active {
+      transform: translateY(0);
+      background-color: white;
+      /* White background when active */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      /* Subtle shadow for separation */
+    }
+
+    /* Logo style inside the navbar */
+    .logo {
+      width: 80px;
       height: auto;
+    }
+
+    .navbar a {
+      color: black;
+      /* Dark text color for better contrast */
+      font-size: 1.1rem;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      color: #ff0800;
     }
   </style>
 </head>
-<body class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-sans">
 
-  <!-- Logo in the top-left corner -->
-  <img src="images/logo.png" alt="National Youth Day Marathon Logo" class="logo">
+<body class="bg-gradient-to-r from-orange-600 to-green-600 text-white font-sans">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="text-orange-900 flex items-center space-x-4">
+      <!-- Logo inside Navbar -->
+      <img src="images/logo.png" alt="National Youth Day Marathon" class="logo w-16 h-auto"> <!-- Adjust logo size -->
+
+      <!-- Text next to the logo -->
+      <b>Vivekananda Youth Forum</b>
+    </div>
+
+    <div class="flex justify-center space-x-6">
+      <a target="_blank" href="https://chennaimath.org/vivekananda-youth-forum">Who we are</a>
+      <a href="#event-details">Marathon Details</a>
+      <a href="#sponsors">Sponsors & Partners</a>
+      <a href="https://vyfchennai.great-site.net">Register Now</a>
+      <a href="https://vyfchennai.great-site.net/volunteer">Volunteer with Us</a>
+    </div>
+  </nav>
 
   <!-- Hero Section with Parallax -->
-  <section class="relative flex items-center justify-center min-h-screen parallax" style="background-image: url('images/ready-run.jpg');" data-aos="fade-up">
+  <section class="relative flex items-center justify-center min-h-screen parallax-container">
+    <div class="parallax-background" id="parallax-background" style="background-image: url('images/ready-run.jpg');">
+    </div>
     <div class="absolute inset-0 bg-black opacity-50"></div>
     <div class="text-center z-10 p-6">
       <h1 class="text-5xl md:text-6xl font-bold tracking-wider mb-6">Chennai, Are You Ready for the Challenge?</h1>
       <p class="text-lg md:text-xl">The National Youth Day 2025 Marathon is YOUR arena. Can you keep up?</p>
       <p class="text-xl mb-16">Beat the competition. Prove you're the best. Run for the legacy of Swami Vivekananda.</p>
-      <a href="https://vyfchennai.great-site.net" class="bg-yellow-500 text-black px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-yellow-400 transition duration-300">Challenge Accepted? Register Now!</a>
+      <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+        <a href="#intro"
+          class="bg-yellow-500 text-black px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-yellow-400 transition duration-300">
+          Scroll Down <i class="fa fa-arrow-down ml-3"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- About Section with Fade-in Animation -->
+  <section class="py-20 bg-white text-center scroll-offset" data-aos="fade-up" id="intro">
+    <h2 class="text-3xl font-semibold text-orange-600 mb-6">This Isn’t Just a Marathon — It’s a Battle</h2>
+    <div class="max-w-4xl mx-auto flex items-center justify-between space-x-8">
+      <!-- Image Section -->
+      <div class="relative flex-shrink-0 w-1/2">
+        <img src="images/nydm.png" alt="Runners" class="w-full rounded-lg shadow-xl">
+      </div>
+
+      <!-- Text Section -->
+      <div class="w-1/2 text-lg text-gray-700">
+        <p class="max-w-lg mx-auto">
+          This is more than just a race. It's a <strong>challenge to YOUR limits</strong>. The National Youth Day
+          Marathon 2025 will test your endurance, your courage, and your determination. You’ll face runners from across
+          Chennai, and only those with the <strong>heart of a champion</strong> will make it to the finish line.
+          <br><br>
+          Inspired by the spirit of <strong>Swami Vivekananda</strong>, we invite you to run for <strong>your pride, for
+            your city</strong>, and for the future of youth.
+          <br><br>
+          So, <strong>do you have what it takes to claim victory?</strong>
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- About Section with Fade-in Animation -->
-  <section class="py-10 bg-white text-center" data-aos="fade-up">
-    <h2 class="text-3xl font-semibold text-blue-600 mb-6">This Isn’t Just a Marathon — It’s a Battle</h2>
-    <div class="max-w-4xl mx-auto flex items-center justify-between space-x-8">
-        <!-- Image Section -->
-        <div class="relative flex-shrink-0 w-1/2">
-            <img src="images/run.jpg" alt="Runners" class="w-full rounded-lg shadow-xl">
-            <div class="absolute inset-0 bg-black opacity-30"></div>
-        </div>
-        
-        <!-- Text Section -->
-        <div class="w-1/2 text-lg text-gray-700">
-            <p class="max-w-lg mx-auto">
-                This is more than just a race. It's a <strong>challenge to YOUR limits</strong>. The National Youth Day Marathon 2025 will test your endurance, your courage, and your determination. You’ll face runners from across Chennai, and only those with the <strong>heart of a champion</strong> will make it to the finish line.
-                <br><br>
-                Inspired by the spirit of <strong>Swami Vivekananda</strong>, we invite you to run for <strong>your pride, for your city</strong>, and for the future of youth. 
-                <br><br>
-                So, <strong>do you have what it takes to claim victory?</strong>
-            </p>
-        </div>
-    </div>
-</section>
-
   <!-- Running Challenges Section -->
-  <section class="py-10 text-center bg-gray-100" data-aos="fade-up">
-    <h2 class="text-3xl font-semibold text-blue-600 mb-6">Choose Your Challenge</h2>
-    <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-12">
+  <section class="py-10 text-center bg-gray-100" id="event-details">
+
+    <h1 class="text-4xl font-semibold text-center text-orange-600 mt-10 mb-12">National Youth Day Marathon 2025</h1>
+
+    <h2 class="text-3xl font-semibold text-orange-600 mb-6">Choose Your Challenge</h3>
+      
+    <div class="flex flex-wrap justify-center gap-6">
+      <!-- Startup Run Card -->
       <div class="bg-white p-6 rounded-lg shadow-lg w-72" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="text-xl font-bold text-blue-600">Startup Run (3.5 km)</h3>
-        <p class="text-lg text-gray-700"><strong>Age 14+</strong> — Kickstart your fitness journey with the Startup Run. Are you ready to take the first step?</p>
+        <div class="flex items-center justify-center space-x-3 mb-4">
+          <!-- Running Icon -->
+          <i class="fas fa-running text-orange-600 text-2xl"></i>
+          <h3 class="text-xl font-bold text-orange-600">Startup Run (3.5 km)</h3>
+        </div>
+        <p class="text-lg text-gray-700"><strong>Age 14+</strong> — Kickstart your fitness journey with the Startup
+          Run. Are you ready to take the first step?</p>
       </div>
+
+      <!-- Strength Run Card -->
       <div class="bg-white p-6 rounded-lg shadow-lg w-72" data-aos="fade-up" data-aos-delay="200">
-        <h3 class="text-xl font-bold text-blue-600">Strength Run (7 km)</h3>
-        <p class="text-lg text-gray-700"><strong>Age 17+</strong> — Push your limits with the Strength Run. Only the strong will finish!</p>
+        <div class="flex items-center justify-center space-x-3 mb-4">
+          <!-- Running Icon -->
+          <i class="fas fa-running text-orange-600 text-2xl"></i>
+          <h3 class="text-xl font-bold text-orange-600">Strength Run (7 km)</h3>
+        </div>
+        <p class="text-lg text-gray-700"><strong>Age 17+</strong> — Push your limits with the Strength Run. Only the
+          strong will finish!</p>
       </div>
+
+      <!-- Freedom Run Card -->
       <div class="bg-white p-6 rounded-lg shadow-lg w-72" data-aos="fade-up" data-aos-delay="300">
-        <h3 class="text-xl font-bold text-blue-600">Freedom Run (10 km)</h3>
-        <p class="text-lg text-gray-700"><strong>Age 17+</strong> — The ultimate test of stamina. Conquer the Freedom Run and prove your endurance!</p>
+        <div class="flex items-center justify-center space-x-3 mb-4">
+          <!-- Running Icon -->
+          <i class="fas fa-running text-orange-600 text-2xl"></i>
+          <h3 class="text-xl font-bold text-orange-600">Freedom Run (10 km)</h3>
+        </div>
+        <p class="text-lg text-gray-700"><strong>Age 17+</strong> — The ultimate test of stamina. Conquer the Freedom
+          Run and prove your endurance!</p>
       </div>
     </div>
   </section>
 
   <!-- Event Details Section with Scroll Animations -->
-  <section class="py-20 text-center bg-gray-100" data-aos="fade-up">
-    <h2 class="text-3xl font-semibold text-blue-600 mb-6">The Ultimate Showdown — Are You In?</h2>
+  <section class="py-5 text-center bg-gray-100">
+    <h3 class="text-3xl font-semibold text-orange-600 mb-6">The Ultimate Showdown — Are You In?</h3>
+
     <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-12">
+
       <div class="bg-white p-6 rounded-lg shadow-lg w-72" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="text-xl font-bold text-blue-600">Date</h3>
-        <p class="text-lg text-gray-700">January 12, 2025 — Mark it. <strong>No excuses.</strong></p>
+        <div class="flex items-center justify-center space-x-3">
+          <!-- Date Icon (Font Awesome) -->
+          <i class="fas fa-calendar-alt text-orange-600 text-2xl"></i>
+          <h3 class="text-xl font-bold text-orange-600 text-center">Date</h3>
+        </div>
+        <p class="text-lg text-gray-700 mt-2 text-center">January 12, 2025 — Mark it. <strong>No excuses.</strong></p>
       </div>
+
       <div class="bg-white p-6 rounded-lg shadow-lg w-72" data-aos="fade-up" data-aos-delay="200">
-        <h3 class="text-xl font-bold text-blue-600">Location</h3>
-        <p class="text-lg text-gray-700">Victory War Memorial, Chennai — <strong>A Place of Honor, A Race for Glory.</strong></p>
+        <div class="flex items-center justify-center space-x-3">
+          <!-- Location Icon (Font Awesome) -->
+          <i class="fas fa-map-marker-alt text-orange-600 text-2xl"></i>
+          <h3 class="text-xl font-bold text-orange-600 text-center">Location</h3>
+        </div>
+        <p class="text-lg text-gray-700 mt-2 text-center">Victory War Memorial, Chennai — <strong>A Place of Honor, A
+            Race for Glory.</strong></p>
+      </div>
+
+    </div>
+
+    <h2 class="text-3xl font-semibold text-orange-600  mt-10 mb-6">Participant Benefits</h2>
+    <div class="flex flex-col md:flex-row justify-center items-center" data-aos="fade-up" data-aos-delay="200">
+      <img src="images/kit.png" alt="National Youth Day Marathon" class="h-auto">
+    </div>
+
+    <h3 class="text-3xl font-semibold text-orange-600 mt-10 mb-12">Race Day Schedule</h3>
+
+    <div class="max-w-2xl mx-auto">
+      <!-- Schedule Container -->
+      <div class="space-y-2">
+
+        <!-- Schedule Item 1 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg flex items-center space-x-6" data-aos="fade-up">
+          <div class="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center">
+            <i class="fas fa-clock text-3xl"></i> <!-- Clock Icon -->
+          </div>
+          <div>
+            <p class="text-xl font-semibold text-orange-600">5:30 AM - Check-In and Registration</p>
+            <p class="text-lg text-gray-700 mt-2">Participants collect race bibs and welcome kits.</p>
+          </div>
+        </div>
+
+        <!-- Schedule Item 2 -->
+        <div class="bg-blue-100 p-8 rounded-lg shadow-lg flex items-center space-x-6" data-aos="fade-up">
+          <div class="w-20 h-20 bg-orange-600 text-white rounded-full flex items-center justify-center">
+            <i class="fas fa-running text-3xl"></i> <!-- Running Icon -->
+          </div>
+          <div>
+            <p class="text-xl font-semibold text-orange-600">6:00 AM - Warm-Up Session</p>
+            <p class="text-lg text-gray-700 mt-2">Guided warm-up to prepare for the race.</p>
+          </div>
+        </div>
+
+        <!-- Schedule Item 3 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg flex items-center space-x-6" data-aos="fade-up">
+          <div class="w-20 h-20 bg-green-600 text-white rounded-full flex items-center justify-center">
+            <i class="fas fa-flag-checkered text-3xl"></i> <!-- Flag Icon -->
+          </div>
+          <div>
+            <p class="text-xl font-semibold text-orange-600">6:30 AM - Marathon Start</p>
+            <p class="text-lg text-gray-700 mt-2">Start-up Run, Strength Run, Freedom Run.</p>
+          </div>
+        </div>
+
+        <!-- Schedule Item 4 -->
+        <div class="bg-blue-100 p-8 rounded-lg shadow-lg flex items-center space-x-6" data-aos="fade-up">
+          <div class="w-20 h-20 bg-yellow-600 text-white rounded-full flex items-center justify-center">
+            <i class="fas fa-utensils text-3xl"></i> <!-- Utensils Icon for refreshments -->
+          </div>
+          <div>
+            <p class="text-xl font-semibold text-orange-600">8:00 AM - Post-Race Refreshments</p>
+            <p class="text-lg text-gray-700 mt-2">Hydration and Breakfast for all participants.</p>
+          </div>
+        </div>
+
+        <!-- Schedule Item 5 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg flex items-center space-x-6" data-aos="fade-up">
+          <div class="w-20 h-20 bg-red-600 text-white rounded-full flex items-center justify-center">
+            <i class="fas fa-trophy text-3xl"></i> <!-- Trophy Icon -->
+          </div>
+          <div>
+            <p class="text-xl font-semibold text-orange-600">8:30 AM - Awards Ceremony @ Vivekanandar Illam</p>
+            <p class="text-lg text-gray-700 mt-2">Trophies for the top 3 winners in each category.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-orange-600 text-center">
+    <h2 class="text-3xl font-semibold text-white-600 mb-10">What You Get by Participating</h2>
+
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- First Come First Serve -->
+      <div class="bg-white p-8 rounded-lg shadow-lg text-center" data-aos="flip-up" data-aos-delay="100">
+        <h3 class="text-xl font-semibold mb-4 text-orange-600">First Come First Serve</h3>
+        <div class="mb-4 text-orange-600 text-4xl">
+          <img src="images/first.jpg" alt="National Youth Day Marathon" class="h-auto">
+          <!-- Adjust logo size -->
+        </div>
+        <p class="text-lg text-gray-700">Join the race and celebrate fitness, unity, and strength.</p>
+      </div>
+
+      <!-- Finisher Medal -->
+      <div class="bg-white p-8 rounded-lg shadow-lg text-center" data-aos="flip-up" data-aos-delay="200">
+        <h3 class="text-xl font-semibold mb-4 text-orange-600">Finisher Medal</h3>
+        <div class="mb-4 text-green-600 text-4xl">
+          <img src="images/medal.jpg" alt="National Youth Day Marathon" class="h-auto">
+        </div>
+        <p class="text-lg text-gray-700">All participants will be rewarded with a medal and certificate.</p>
+      </div>
+
+      <!-- Winning Trophies -->
+      <div class="bg-white p-8 rounded-lg shadow-lg text-center" data-aos="flip-up" data-aos-delay="300">
+        <h3 class="text-xl font-semibold mb-4 text-orange-600">Winning Trophies</h3>
+        <div class="mb-4 text-blue-600 text-4xl">
+          <img src="images/trophie.png" alt="National Youth Day Marathon" class="h-auto">
+          <i class="fas fa-trophy"></i>
+        </div>
+        <p class="text-lg text-gray-700">Top 3 winners in each category will be awarded trophies.</p>
+      </div>
+
+    </div>
+  </section>
+  <section class="py-16 bg-gray-100 text-center" id="sponsors">
+    <h2 class="text-3xl font-semibold text-orange-600 mb-12">Our Sponsors & Partners</h2>
+
+    <!-- Sponsors & Partners -->
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="">
+        <!-- Sponsor 1 -->
+        <div class="flex justify-center items-center" data-aos="flip-right">
+          <img src="images/vmrf.png" alt="Sponsor 1" class="max-h-18 mx-auto">
+        </div>
+      </div>
+    </div>
+
+    <!-- <h3 class="text-2xl font-semibold text-orange-600 my-12">Our Co-Sponsors</h3>  -->
+
+    <!-- Co-Sponsors -->
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+        <!-- Co-Sponsor 1 -->
+        <div class="flex justify-center items-center">
+          <!-- <img src="images/cosponsor1-logo.png" alt="Co-Sponsor 1" class="max-h-12 mx-auto"> -->
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Register Section with Smooth Scroll -->
-  <section id="register" class="bg-blue-600 py-16 text-center text-white" data-aos="fade-up">
+  <section id="register" class="py-8 bg-orange-600 text-center text-white">
     <h2 class="text-3xl font-semibold mb-6">Chennai, Time to Prove</h2>
-    <p class="text-lg mb-6">This is not just a marathon — it’s a <strong>test of willpower, strength</strong>, and <strong>determination</strong>. Show up, show off, and claim your spot at the top!</p>
-    <a href="https://vyfchennai.great-site.net" target="_blank" class="bg-yellow-500 px-8 py-4 text-black font-bold rounded-full shadow-lg hover:bg-yellow-400 transition duration-300">Ready to Participate? Register Now</a>
+    <p class="text-lg mb-6">This is not just a marathon — it’s a <strong>test of willpower, strength</strong>, and
+      <strong>determination</strong>. Show up, show off, and claim your spot at the top!
+    </p>
+    <a href="https://vyfchennai.great-site.net" target="_blank"
+      class="bg-yellow-500 px-8 py-4 text-black font-bold rounded-full shadow-lg hover:bg-yellow-400 transition duration-300">Ready
+      to Participate? Register Now</a>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section class="py-12 px-4  bg-gray-100 ">
+    <div class="max-w-screen-xl mx-auto text-center">
+      <!-- Title -->
+      <h2 class="text-3xl font-semibold text-gray-800">Contact Us</h2>
+      <p class="mt-2 text-lg text-gray-600">Reach out to us for any inquiries or support. Below are our contact details.
+      </p>
+
+      <!-- Contact Details -->
+      <div class="mt-8 flex flex-col md:flex-row gap-8">
+        <!-- Left Side (Contact Details) -->
+        <div class="flex-1 bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-semibold text-gray-800">Contact Details</h3>
+
+          <!-- Jayavel G -->
+          <div class="mt-4">
+            <h4 class="text-lg font-medium text-gray-700">Jayavel G</h4>
+            <p class="text-gray-600 mt-1">Call / WhatsApp: <a href="tel:+919876543210"
+                class="text-indigo-600 hover:underline">+91 9876543210</a></p>
+          </div>
+
+          <!-- Kesav -->
+          <div class="mt-4">
+            <h4 class="text-lg font-medium text-gray-700">Kesav</h4>
+            <p class="text-gray-600 mt-1">Call / WhatsApp: <a href="tel:+919876543210"
+                class="text-indigo-600 hover:underline">+91 9876543210</a></p>
+          </div>
+
+          <!-- Email -->
+          <div class="mt-4">
+            <h4 class="text-lg font-medium text-gray-700">Email</h4>
+            <p class="text-gray-600 mt-1">For any queries, email us at: <a href="mailto:vyfchennai@gmail.com"
+                class="text-indigo-600 hover:underline">vyfchennai@gmail.com</a></p>
+          </div>
+        </div>
+
+        <!-- Right Side (Google Map) -->
+        <div class="flex-1">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3887.071810130227!2d80.267489!3d13.031099!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267d2289e487b%3A0x65b0a27ef282a718!2s31%2C%20Ramakrishna%20Mutt%20Rd%2C%20Alamelu%20Manga%20Puram%2C%20Sankarapuram%2C%20Mylapore%2C%20Chennai%2C%20Tamil%20Nadu%20600028%2C%20India!5e0!3m2!1sen!2sus!4v1734547420296!5m2!1sen!2sus"
+            class="w-full h-96 rounded-lg shadow-lg" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Footer Section with Animation -->
-  <footer class="bg-blue-800 py-6 text-center text-white">
-    <p>&copy; 2025 National Youth Day Marathon | <strong>Chennai, Prepare to Take the Lead</strong></p>
+  <footer class="bg-orange-600 py-6 text-center text-white">
+    <p>&copy; 2025 Vivekananda Youth Forum | <strong>Chennai, Prepare to Take the Lead</strong></p>
   </footer>
 
   <!-- Initialize AOS -->
@@ -120,6 +436,23 @@
       easing: 'ease-in-out', // Animation easing
       once: true, // Only animate once
     });
+
+
+    // JavaScript for Dynamic Parallax Effect
+    window.addEventListener('scroll', function () {
+      var scrollPosition = window.scrollY;
+      var parallaxBackground = document.getElementById('parallax-background');
+      parallaxBackground.style.transform = 'translateY(' + scrollPosition * 0.5 + 'px)';
+
+      // Show/hide navbar based on scroll position
+      var navbar = document.querySelector('.navbar');
+      if (scrollPosition > 100) {
+        navbar.classList.add('active');
+      } else {
+        navbar.classList.remove('active');
+      }
+    });
   </script>
 </body>
+
 </html>
